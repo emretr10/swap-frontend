@@ -249,7 +249,7 @@ export default function AccountDetails({
           <Identicon />
         </IconWrapper>
       )
-    }  else if (connector === binanceinjected) {
+    } else if (connector === binanceinjected) {
       return (
         <IconWrapper size={16}>
           <img src={BinanceIcon} alt={'binance wallet logo'} />
