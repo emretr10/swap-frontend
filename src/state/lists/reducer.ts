@@ -125,6 +125,7 @@ export default createReducer(initialState, builder =>
     })
     .addCase(updateVersion, state => {
       // state loaded from localStorage, but new lists have never been initialized
+      console.log('xxx: ', state.selectedListUrl)
       if (!state.lastInitializedDefaultListOfLists) {
         state.byUrl = initialState.byUrl
         state.selectedListUrl = DEFAULT_TOKEN_LIST_URL
@@ -150,7 +151,7 @@ export default createReducer(initialState, builder =>
 
       state.lastInitializedDefaultListOfLists = DEFAULT_LIST_OF_LISTS
 
-      if (!state.selectedListUrl) {
+      if (!state.selectedListUrl || !state.lastInitializedDefaultListOfLists.includes(state.selectedListUrl)) {
         state.selectedListUrl = DEFAULT_TOKEN_LIST_URL
         if (!state.byUrl[DEFAULT_TOKEN_LIST_URL]) {
           state.byUrl[DEFAULT_TOKEN_LIST_URL] = NEW_LIST_STATE
