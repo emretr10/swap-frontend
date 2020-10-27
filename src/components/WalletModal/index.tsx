@@ -268,7 +268,7 @@ export default function WalletModal({
       // overwrite injected when needed
       if (option.connector === binanceinjected) {
         // don't show injected if there's no injected provider
-        if (!(window.web3)) {
+        if (!window.web3) {
           if (option.name === 'Binance Chain Wallet') {
             return (
               <Option
