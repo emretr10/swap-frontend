@@ -48,10 +48,7 @@ export default function SwapModalFooter({
     const router = getRouterContract(chainId, library, account)
     const method = router.getAmountBurnTokenFee
 
-    const args = [
-      trade?.route?.path[0]?.address,
-      trade.inputAmount.raw.toString()
-    ]
+    const args = [trade?.route?.path[0]?.address, trade.inputAmount.raw.toString()]
     method(...args).then((response: number) => {
       const decimals = trade?.route?.path[0]?.decimals
       setAmountBurn(Number(response) / Number(`1e${decimals}`))
@@ -124,17 +121,19 @@ export default function SwapModalFooter({
             {realizedLPFee ? realizedLPFee?.toSignificant(6) + ' ' + trade.inputAmount.currency.symbol : '-'}
           </TYPE.black>
         </RowBetween>
-        {amountBurn > 0 && <RowBetween>
-          <RowFixed>
-            <TYPE.black fontSize={14} fontWeight={400} color={theme.red1}>
-              Burn Token Amount
+        {amountBurn > 0 && (
+          <RowBetween>
+            <RowFixed>
+              <TYPE.black fontSize={14} fontWeight={400} color={theme.red1}>
+                Burn Token Amount
+              </TYPE.black>
+              <QuestionHelper text="This token will be burned when sold" />
+            </RowFixed>
+            <TYPE.black fontSize={14} color={theme.red1}>
+              {realizedLPFee ? `${amountBurn} ${trade.inputAmount.currency.symbol}` : '-'}
             </TYPE.black>
-            <QuestionHelper text="This token will be burned when sold" />
-          </RowFixed>
-          <TYPE.black fontSize={14} color={theme.red1}>
-            {realizedLPFee ? `${amountBurn} ${trade.inputAmount.currency.symbol}` : '-'}
-          </TYPE.black>
-        </RowBetween>}
+          </RowBetween>
+        )}
       </AutoColumn>
 
       <AutoRow>
