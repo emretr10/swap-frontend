@@ -1,5 +1,5 @@
 import { Trade, TradeType } from '@bscex/sdk'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
@@ -11,6 +11,8 @@ import { RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { SectionBreak } from './styleds'
 import SwapRoute from './SwapRoute'
+import { getRouterContract } from '../../utils'
+import { useActiveWeb3React } from '../../hooks'
 
 // const InfoLink = styled(ExternalLink)`
 //   width: 100%;
@@ -24,9 +26,25 @@ import SwapRoute from './SwapRoute'
 
 function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippage: number }) {
   const theme = useContext(ThemeContext)
+  const { account, chainId, library } = useActiveWeb3React()
   const { priceImpactWithoutFee, realizedLPFee } = computeTradePriceBreakdown(trade)
   const isExactIn = trade.tradeType === TradeType.EXACT_INPUT
   const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
+  const [amountBurn, setAmountBurn] = useState(0)
+
+  if (chainId && library && account) {
+    const router = getRouterContract(chainId, library, account)
+    const method = router.getAmountBurnTokenFee
+
+    const args = [
+      trade?.route?.path[0]?.address,
+      trade.inputAmount.raw.toString()
+    ]
+    method(...args).then((response: number) => {
+      const decimals = trade?.route?.path[0]?.decimals
+      setAmountBurn(Number(response) / Number(`1e${decimals}`))
+    })
+  }
 
   return (
     <>
@@ -69,6 +87,18 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
             {realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${trade.inputAmount.currency.symbol}` : '-'}
           </TYPE.black>
         </RowBetween>
+
+        {amountBurn > 0 && <RowBetween>
+          <RowFixed>
+            <TYPE.black fontSize={14} fontWeight={400} color={theme.red1}>
+              Burn Token Amount
+            </TYPE.black>
+            <QuestionHelper text="This token will be burned when sold" />
+          </RowFixed>
+          <TYPE.black fontSize={14} color={theme.red1}>
+            {realizedLPFee ? `${amountBurn} ${trade.inputAmount.currency.symbol}` : '-'}
+          </TYPE.black>
+        </RowBetween>}
       </AutoColumn>
     </>
   )

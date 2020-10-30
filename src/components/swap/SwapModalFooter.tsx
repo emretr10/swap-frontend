@@ -17,6 +17,8 @@ import QuestionHelper from '../QuestionHelper'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { StyledBalanceMaxMini, SwapCallbackError } from './styleds'
+import { getRouterContract } from '../../utils'
+import { useActiveWeb3React } from '../../hooks'
 
 export default function SwapModalFooter({
   trade,
@@ -33,12 +35,28 @@ export default function SwapModalFooter({
 }) {
   const [showInverted, setShowInverted] = useState<boolean>(false)
   const theme = useContext(ThemeContext)
+  const { account, chainId, library } = useActiveWeb3React()
   const slippageAdjustedAmounts = useMemo(() => computeSlippageAdjustedAmounts(trade, allowedSlippage), [
     allowedSlippage,
     trade
   ])
   const { priceImpactWithoutFee, realizedLPFee } = useMemo(() => computeTradePriceBreakdown(trade), [trade])
   const severity = warningSeverity(priceImpactWithoutFee)
+
+  const [amountBurn, setAmountBurn] = useState(0)
+  if (chainId && library && account) {
+    const router = getRouterContract(chainId, library, account)
+    const method = router.getAmountBurnTokenFee
+
+    const args = [
+      trade?.route?.path[0]?.address,
+      trade.inputAmount.raw.toString()
+    ]
+    method(...args).then((response: number) => {
+      const decimals = trade?.route?.path[0]?.decimals
+      setAmountBurn(Number(response) / Number(`1e${decimals}`))
+    })
+  }
 
   return (
     <>
@@ -106,6 +124,17 @@ export default function SwapModalFooter({
             {realizedLPFee ? realizedLPFee?.toSignificant(6) + ' ' + trade.inputAmount.currency.symbol : '-'}
           </TYPE.black>
         </RowBetween>
+        {amountBurn > 0 && <RowBetween>
+          <RowFixed>
+            <TYPE.black fontSize={14} fontWeight={400} color={theme.red1}>
+              Burn Token Amount
+            </TYPE.black>
+            <QuestionHelper text="This token will be burned when sold" />
+          </RowFixed>
+          <TYPE.black fontSize={14} color={theme.red1}>
+            {realizedLPFee ? `${amountBurn} ${trade.inputAmount.currency.symbol}` : '-'}
+          </TYPE.black>
+        </RowBetween>}
       </AutoColumn>
 
       <AutoRow>

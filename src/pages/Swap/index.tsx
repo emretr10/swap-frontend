@@ -44,6 +44,7 @@ import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
+import { getRouterContract } from '../../utils'
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -62,7 +63,7 @@ export default function Swap() {
     setDismissTokenWarning(true)
   }, [])
 
-  const { account } = useActiveWeb3React()
+  const { account, chainId, library } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
 
   // toggle wallet when disconnected
@@ -257,8 +258,23 @@ export default function Swap() {
   )
 
   const handleMaxInput = useCallback(() => {
-    maxAmountInput && onUserInput(Field.INPUT, maxAmountInput.toExact())
-  }, [maxAmountInput, onUserInput])
+    const currency: any = currencies[Field.INPUT]
+    const address = currency?.address
+    const inputAmount = maxAmountInput?.raw?.toString()
+
+    if (chainId && library && account && address && inputAmount) {
+      const router = getRouterContract(chainId, library, account)
+      const method = router.getAmountBurnTokenFee
+      method(address, inputAmount).then((response: number) => {
+        const decimals = currency?.decimals
+        const amountBurn = Number(response) / Number(`1e${decimals}`)
+        const value = Number(maxAmountInput?.toExact()) - Number(amountBurn)
+        maxAmountInput && onUserInput(Field.INPUT, value.toString())
+      })
+    } else {
+      maxAmountInput && onUserInput(Field.INPUT, maxAmountInput.toExact())
+    }
+  }, [maxAmountInput, onUserInput, chainId, library, account, currencies])
 
   const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [
     onCurrencySelection
