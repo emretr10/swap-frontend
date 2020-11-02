@@ -18,11 +18,11 @@ export function isAddress(value: any): string | false {
 }
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  1: '',
-  3: 'ropsten.',
-  4: 'rinkeby.',
-  5: 'goerli.',
-  42: 'kovan.',
+  1: 'etherscan.io',
+  3: 'ropsten.etherscan.io',
+  4: 'rinkeby.etherscan.io',
+  5: 'goerli.etherscan.io',
+  42: 'kovan.etherscan.io',
   56: 'bscscan.com',
   97: 'testnet.bscscan.com'
 }

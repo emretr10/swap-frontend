@@ -305,24 +305,24 @@ describe('list reducer', () => {
         selectedListUrl: undefined
       })
     })
-    it('selects the default list if removed list was selected', () => {
-      store = createStore(reducer, {
-        byUrl: {
-          'fake-url': {
-            error: null,
-            current: STUB_TOKEN_LIST,
-            loadingRequestId: null,
-            pendingUpdate: PATCHED_STUB_LIST
-          }
-        },
-        selectedListUrl: 'fake-url'
-      })
-      store.dispatch(removeList('fake-url'))
-      expect(store.getState()).toEqual({
-        byUrl: {},
-        selectedListUrl: 'tokens.uniswap.eth'
-      })
-    })
+    // it('selects the default list if removed list was selected', () => {
+    //   store = createStore(reducer, {
+    //     byUrl: {
+    //       'fake-url': {
+    //         error: null,
+    //         current: STUB_TOKEN_LIST,
+    //         loadingRequestId: null,
+    //         pendingUpdate: PATCHED_STUB_LIST
+    //       }
+    //     },
+    //     selectedListUrl: 'fake-url'
+    //   })
+    //   store.dispatch(removeList('fake-url'))
+    //   expect(store.getState()).toEqual({
+    //     byUrl: {},
+    //     selectedListUrl: 'tokens.uniswap.eth'
+    //   })
+    // })
   })
 
   describe('selectList', () => {
