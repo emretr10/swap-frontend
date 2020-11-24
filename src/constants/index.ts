@@ -172,6 +172,14 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#010101',
     primary: true
   },
+  EZDEFI: {
+    connector: injected,
+    name: 'ezDeFi',
+    iconName: 'zd.png',
+    description: 'A multi-functional browser extension and more...',
+    href: null,
+    color: '#E8831D'
+  },
   METAMASK: {
     connector: injected,
     name: 'MetaMask',
