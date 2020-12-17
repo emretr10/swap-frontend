@@ -1,5 +1,5 @@
 import { Trade, TradeType } from '@bscex/sdk'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
@@ -11,8 +11,8 @@ import { RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { SectionBreak } from './styleds'
 import SwapRoute from './SwapRoute'
-import { getRouterContract } from '../../utils'
-import { useActiveWeb3React } from '../../hooks'
+// import { getRouterContract } from '../../utils'
+// import { useActiveWeb3React } from '../../hooks'
 
 // const InfoLink = styled(ExternalLink)`
 //   width: 100%;
@@ -26,22 +26,22 @@ import { useActiveWeb3React } from '../../hooks'
 
 function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippage: number }) {
   const theme = useContext(ThemeContext)
-  const { account, chainId, library } = useActiveWeb3React()
+  // const { account, chainId, library } = useActiveWeb3React()
   const { priceImpactWithoutFee, realizedLPFee } = computeTradePriceBreakdown(trade)
   const isExactIn = trade.tradeType === TradeType.EXACT_INPUT
   const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
-  const [amountBurn, setAmountBurn] = useState(0)
+  // const [amountBurn, setAmountBurn] = useState(0)
+  let amountBurn = 0
+  // if (chainId && library && account) {
+  //   const router = getRouterContract(chainId, library, account)
+  //   const method = router.getAmountBurnTokenFee
 
-  if (chainId && library && account) {
-    const router = getRouterContract(chainId, library, account)
-    const method = router.getAmountBurnTokenFee
-
-    const args = [trade?.route?.path[0]?.address, trade.inputAmount.raw.toString()]
-    method(...args).then((response: number) => {
-      const decimals = trade?.route?.path[0]?.decimals
-      setAmountBurn(Number(response) / Number(`1e${decimals}`))
-    })
-  }
+  //   const args = [trade?.route?.path[0]?.address, trade.inputAmount.raw.toString()]
+  //   method(...args).then((response: number) => {
+  //     const decimals = trade?.route?.path[0]?.decimals
+  //     setAmountBurn(Number(response) / Number(`1e${decimals}`))
+  //   })
+  // }
 
   return (
     <>

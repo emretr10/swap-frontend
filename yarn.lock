@@ -1142,10 +1142,10 @@
     "@bscex/core" "1.0.5"
     "@bscex/lib" "2.0.8"
 
-"@bscex/sdk@3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@bscex/sdk/-/sdk-3.1.2.tgz#bdee1da2fd3540568981acacc3ee07f5112310a5"
-  integrity sha512-EUfQ3gj2ofBkzysIZ4y6ghtYA+4n1uXYLtjSFvuCLglPZSwJ9etECtoWOhNQDww28hAuwq70ngParrSrlhkjVg==
+"@bscex/sdk@3.1.7":
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/@bscex/sdk/-/sdk-3.1.7.tgz#9c41ce3725eb8e5225d3a634ea6ce963c58d92f1"
+  integrity sha512-LpI/V2tHKaLUay0LddbcDBSlfdvMMjeb/1zB5L3s+0p3bhx1gen+flqxzOtMyGvNJH/oBSqHn16mV3AQvhot5g==
   dependencies:
     "@bscex/core" "1.0.5"
     "@uniswap/v2-core" "^1.0.0"

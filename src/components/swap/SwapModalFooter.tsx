@@ -17,8 +17,8 @@ import QuestionHelper from '../QuestionHelper'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { StyledBalanceMaxMini, SwapCallbackError } from './styleds'
-import { getRouterContract } from '../../utils'
-import { useActiveWeb3React } from '../../hooks'
+// import { getRouterContract } from '../../utils'
+// import { useActiveWeb3React } from '../../hooks'
 
 export default function SwapModalFooter({
   trade,
@@ -35,7 +35,7 @@ export default function SwapModalFooter({
 }) {
   const [showInverted, setShowInverted] = useState<boolean>(false)
   const theme = useContext(ThemeContext)
-  const { account, chainId, library } = useActiveWeb3React()
+  // const { account, chainId, library } = useActiveWeb3React()
   const slippageAdjustedAmounts = useMemo(() => computeSlippageAdjustedAmounts(trade, allowedSlippage), [
     allowedSlippage,
     trade
@@ -43,17 +43,18 @@ export default function SwapModalFooter({
   const { priceImpactWithoutFee, realizedLPFee } = useMemo(() => computeTradePriceBreakdown(trade), [trade])
   const severity = warningSeverity(priceImpactWithoutFee)
 
-  const [amountBurn, setAmountBurn] = useState(0)
-  if (chainId && library && account) {
-    const router = getRouterContract(chainId, library, account)
-    const method = router.getAmountBurnTokenFee
+  // const [amountBurn, setAmountBurn] = useState(0)
+  let amountBurn = 0
+  // if (chainId && library && account) {
+  //   const router = getRouterContract(chainId, library, account)
+  //   const method = router.getAmountBurnTokenFee
 
-    const args = [trade?.route?.path[0]?.address, trade.inputAmount.raw.toString()]
-    method(...args).then((response: number) => {
-      const decimals = trade?.route?.path[0]?.decimals
-      setAmountBurn(Number(response) / Number(`1e${decimals}`))
-    })
-  }
+  //   const args = [trade?.route?.path[0]?.address, trade.inputAmount.raw.toString()]
+  //   method(...args).then((response: number) => {
+  //     const decimals = trade?.route?.path[0]?.decimals
+  //     setAmountBurn(Number(response) / Number(`1e${decimals}`))
+  //   })
+  // }
 
   return (
     <>
