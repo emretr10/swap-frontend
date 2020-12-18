@@ -263,14 +263,14 @@ export default function Swap() {
     // const inputAmount = maxAmountInput?.raw?.toString()
 
     // if (chainId && library && account && address && inputAmount) {
-      // const router = getRouterContract(chainId, library, account)
-      // const method = router.getAmountBurnTokenFee
-      // method(address, inputAmount).then((response: number) => {
-      //   const decimals = currency?.decimals
-      //   const amountBurn = Number(response) / Number(`1e${decimals}`)
-      //   const value = Number(maxAmountInput?.toExact()) - Number(amountBurn)
-      //   maxAmountInput && onUserInput(Field.INPUT, value.toString())
-      // })
+    // const router = getRouterContract(chainId, library, account)
+    // const method = router.getAmountBurnTokenFee
+    // method(address, inputAmount).then((response: number) => {
+    //   const decimals = currency?.decimals
+    //   const amountBurn = Number(response) / Number(`1e${decimals}`)
+    //   const value = Number(maxAmountInput?.toExact()) - Number(amountBurn)
+    //   maxAmountInput && onUserInput(Field.INPUT, value.toString())
+    // })
     // } else {
     maxAmountInput && onUserInput(Field.INPUT, maxAmountInput.toExact())
     // }

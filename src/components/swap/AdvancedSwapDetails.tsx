@@ -31,7 +31,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
   const isExactIn = trade.tradeType === TradeType.EXACT_INPUT
   const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
   // const [amountBurn, setAmountBurn] = useState(0)
-  let amountBurn = 0
+  const amountBurn = 0
   // if (chainId && library && account) {
   //   const router = getRouterContract(chainId, library, account)
   //   const method = router.getAmountBurnTokenFee
