@@ -177,7 +177,8 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     iconName: 'zd.png',
     description: 'A multi-functional browser extension and more...',
     href: null,
-    color: '#E8831D'
+    color: '#E8831D',
+    mobile: true
   },
   METAMASK: {
     connector: injected,
