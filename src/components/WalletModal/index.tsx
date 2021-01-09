@@ -6,6 +6,7 @@ import { isMobile } from 'react-device-detect'
 import ReactGA from 'react-ga'
 import styled from 'styled-components'
 import MetamaskIcon from '../../assets/images/metamask.png'
+import ezDeFiIcon from '../../assets/images/zd.png'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { fortmatic, injected, binanceinjected, portis } from '../../connectors'
 import { OVERLAY_READY } from '../../connectors/Fortmatic'
@@ -249,6 +250,18 @@ export default function WalletModal({
                 subheader={null}
                 link={'https://metamask.io/'}
                 icon={MetamaskIcon}
+              />
+            )
+          } else if (option.name === 'ezDeFi') {
+            return (
+              <Option
+                id={`connect-${key}`}
+                key={key}
+                color={'#E8831D'}
+                header={'Install ezDeFi'}
+                subheader={null}
+                link={'https://ezdefi.com/products/walletapp/'}
+                icon={ezDeFiIcon}
               />
             )
           } else {
