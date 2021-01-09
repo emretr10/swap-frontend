@@ -289,8 +289,7 @@ export default function WalletModal({
         // likewise for generic
         else if (option.name === 'Injected' && isMetamask) {
           return null
-        }
-        else if (option.name === 'Coin98' && isCoin98) {
+        } else if (option.name === 'Coin98' && isCoin98) {
           return null
         }
       }
