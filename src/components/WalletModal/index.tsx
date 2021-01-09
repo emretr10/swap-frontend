@@ -266,13 +266,13 @@ export default function WalletModal({
                 icon={ezDeFiIcon}
               />
             )
-          } else if (option.name === 'Coin98') {
+          } else if (option.name === 'Coin98 Wallet') {
             return (
               <Option
                 id={`connect-${key}`}
                 key={key}
                 color={'#E8831D'}
-                header={'Install Coin98'}
+                header={'Install Coin98 Wallet'}
                 subheader={null}
                 link={'https://coin98.app/'}
                 icon={Coin98Icon}
@@ -290,7 +290,7 @@ export default function WalletModal({
         else if (option.name === 'Injected' && isMetamask) {
           return null
         }
-        else if (option.name === 'Coin98' && isCoin98) {
+        else if (option.name === 'Coin98 Wallet' && isCoin98) {
           return null
         }
       }

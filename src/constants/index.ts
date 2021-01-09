@@ -198,7 +198,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
   },
   COIN98: {
     connector: injected,
-    name: 'Coin98',
+    name: 'Coin98 Wallet',
     iconName: 'coin98.png',
     description: 'Crypto Wallet & Payment Gateway',
     href: null,
