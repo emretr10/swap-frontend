@@ -7,6 +7,7 @@ import ReactGA from 'react-ga'
 import styled from 'styled-components'
 import MetamaskIcon from '../../assets/images/metamask.png'
 import ezDeFiIcon from '../../assets/images/zd.png'
+import Coin98Icon from '../../assets/images/coin98.png'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { fortmatic, injected, binanceinjected, portis } from '../../connectors'
 import { OVERLAY_READY } from '../../connectors/Fortmatic'
@@ -207,6 +208,7 @@ export default function WalletModal({
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isMetamask = window.ethereum && window.ethereum.isMetaMask
+    const isCoin98 = window.ethereum && window.ethereum.isCoin98
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
@@ -264,6 +266,18 @@ export default function WalletModal({
                 icon={ezDeFiIcon}
               />
             )
+          } else if (option.name === 'Coin98') {
+            return (
+              <Option
+                id={`connect-${key}`}
+                key={key}
+                color={'#E8831D'}
+                header={'Install Coin98'}
+                subheader={null}
+                link={'https://coin98.app/'}
+                icon={Coin98Icon}
+              />
+            )
           } else {
             return null //dont want to return install twice
           }
@@ -274,6 +288,9 @@ export default function WalletModal({
         }
         // likewise for generic
         else if (option.name === 'Injected' && isMetamask) {
+          return null
+        }
+        else if (option.name === 'Coin98' && isCoin98) {
           return null
         }
       }
