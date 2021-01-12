@@ -14,7 +14,7 @@ import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { CardNoise } from '../earn/styled'
 // import { CountUp } from 'use-count-up'
-import { TYPE, ExternalLink } from '../../theme'
+import { TYPE } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -226,35 +226,53 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-const StyledExternalLink = styled(ExternalLink).attrs({
-  activeClassName
-})<{ isActive?: boolean }>`
-  ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
-  border-radius: 3rem;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: ${({ theme }) => theme.text2};
-  font-size: 1rem;
-  width: fit-content;
-  margin: 0 12px;
+// const StyledExternalLink = styled(ExternalLink).attrs({
+//   activeClassName
+// })<{ isActive?: boolean }>`
+//   ${({ theme }) => theme.flexRowNoWrap}
+//   align-items: left;
+//   border-radius: 3rem;
+//   outline: none;
+//   cursor: pointer;
+//   text-decoration: none;
+//   color: ${({ theme }) => theme.text2};
+//   font-size: 1rem;
+//   width: fit-content;
+//   margin: 0 12px;
+//   font-weight: 500;
+
+//   &.${activeClassName} {
+//     border-radius: 12px;
+//     font-weight: 600;
+//     color: ${({ theme }) => theme.text1};
+//   }
+
+//   :hover,
+//   :focus {
+//     color: ${({ theme }) => darken(0.1, theme.text1)};
+//   }
+
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//       display: none;
+// `}
+// `
+
+const StyledAbsoluteLink = styled.a`
+  color: rgb(195, 197, 203);
   font-weight: 500;
-
-  &.${activeClassName} {
-    border-radius: 12px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text1};
+  padding-left: 8px;
+  padding-right: 8px;
+  text-decoration: none;
+  &:hover {
+    color: #ffffff;
   }
-
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+  &.active {
+    color: rgb(195, 197, 203);
   }
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-      display: none;
-`}
+  @media (max-width: 767px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
@@ -323,12 +341,12 @@ export default function Header() {
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
             Vote
           </StyledNavLink>*/}
-          <StyledExternalLink id={`stake-nav-link`} href={'https://launchpoolx.bscex.org/#/'}>
-            LaunchpoolX <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://swapx.bscex.org/#/'}>
-            SwapX <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
+          <StyledAbsoluteLink href={'https://launchpoolx.bscex.org/#/'}>
+            LaunchpoolX
+          </StyledAbsoluteLink>
+          <StyledAbsoluteLink href={'https://swapx.bscex.org/#/'}>
+            SwapX
+          </StyledAbsoluteLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
