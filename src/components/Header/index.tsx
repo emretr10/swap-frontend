@@ -341,12 +341,8 @@ export default function Header() {
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
             Vote
           </StyledNavLink>*/}
-          <StyledAbsoluteLink href={'https://launchpoolx.bscex.org/#/'}>
-            LaunchpoolX
-          </StyledAbsoluteLink>
-          <StyledAbsoluteLink href={'https://swapx.bscex.org/#/'}>
-            SwapX
-          </StyledAbsoluteLink>
+          <StyledAbsoluteLink href={'https://launchpoolx.bscex.org/#/'}>LaunchpoolX</StyledAbsoluteLink>
+          <StyledAbsoluteLink href={'https://swapx.bscex.org/#/'}>SwapX</StyledAbsoluteLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
