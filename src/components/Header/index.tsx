@@ -326,6 +326,9 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link`} href={'https://launchpoolx.bscex.org/#/'}>
             LaunchpoolX <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
+          <StyledExternalLink id={`stake-nav-link`} href={'https://swapx.bscex.org/#/'}>
+            SwapX <span style={{ fontSize: '11px' }}>↗</span>
+          </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
