@@ -341,7 +341,7 @@ export default function Header() {
         </Title>
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-            {t('swap')}
+            AMMv1
           </StyledNavLink>
           <StyledNavLink
             id={`pool-nav-link`}
