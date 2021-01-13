@@ -224,6 +224,10 @@ const StyledNavLink = styled(NavLink).attrs({
   :focus {
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
+  @media (max-width: 767px) {
+    margin: 0 3px;
+    font-size: 0.9rem;
+  }
 `
 
 // const StyledExternalLink = styled(ExternalLink).attrs({
@@ -270,8 +274,9 @@ const StyledAbsoluteLink = styled.a`
     color: rgb(195, 197, 203);
   }
   @media (max-width: 767px) {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 0.9rem;
   }
 `
 
