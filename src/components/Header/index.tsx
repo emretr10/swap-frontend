@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import Logo from '../../assets/svg/logo.svg'
-import LogoDark from '../../assets/svg/logo.svg'
+import LogoDark from '../../assets/svg/logo-icon.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -195,6 +195,21 @@ const UniIcon = styled.div`
   :hover {
     transform: rotate(-5deg);
   }
+  @media (max-width: 767px) {
+    display: none;
+  }
+`
+
+const UniIcon2 = styled.div`
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
+    margin: 10px 0px;
+    transition: transform 0.3s ease;
+    :hover {
+      transform: rotate(-5deg);
+    }
+  }
 `
 
 const activeClassName = 'ACTIVE'
@@ -225,8 +240,7 @@ const StyledNavLink = styled(NavLink).attrs({
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
   @media (max-width: 767px) {
-    margin: 0 3px;
-    font-size: 0.9rem;
+    margin: 0 7px;
   }
 `
 
@@ -274,9 +288,8 @@ const StyledAbsoluteLink = styled.a`
     color: rgb(195, 197, 203);
   }
   @media (max-width: 767px) {
-    padding-left: 3px;
-    padding-right: 3px;
-    font-size: 0.9rem;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `
 
@@ -320,8 +333,11 @@ export default function Header() {
       <HeaderRow>
         <Title href=".">
           <UniIcon>
-            <img width={'120px'} src={isDark ? LogoDark : Logo} alt="logo" />
+            <img width={'120px'} src={isDark ? Logo : Logo} alt="logo" />
           </UniIcon>
+          <UniIcon2>
+            <img width={'50px'} src={isDark ? LogoDark : LogoDark} alt="logo" />
+          </UniIcon2>
         </Title>
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
