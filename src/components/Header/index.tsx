@@ -1,5 +1,5 @@
 import { ChainId } from '@bscex/sdk'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
@@ -107,7 +107,7 @@ const HeaderLinks = styled(Row)`
     display: block;
     height: ${({ theme, showMenu }) => (showMenu ? '220px' : '0px')};
     overflow: hidden;
-    transition: all .15s linear;
+    transition: all 0.15s linear;
   }
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
@@ -314,33 +314,35 @@ export default function Header() {
   // const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   // const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
   const [showMenu, setShowMenu] = useState(false)
-  const HeaderLink = <HeaderLinks showMenu={showMenu}>
-    <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-      AMMv1
-    </StyledNavLink>
-    <StyledNavLink
-      id={`pool-nav-link`}
-      to={'/pool'}
-      isActive={(match, { pathname }) =>
-        Boolean(match) ||
-        pathname.startsWith('/add') ||
-        pathname.startsWith('/remove') ||
-        pathname.startsWith('/create') ||
-        pathname.startsWith('/find')
-      }
-    >
-      {t('pool')}
-    </StyledNavLink>
-    {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
+  const HeaderLink = (
+    <HeaderLinks showMenu={showMenu}>
+      <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
+        AMMv1
+      </StyledNavLink>
+      <StyledNavLink
+        id={`pool-nav-link`}
+        to={'/pool'}
+        isActive={(match, { pathname }) =>
+          Boolean(match) ||
+          pathname.startsWith('/add') ||
+          pathname.startsWith('/remove') ||
+          pathname.startsWith('/create') ||
+          pathname.startsWith('/find')
+        }
+      >
+        {t('pool')}
+      </StyledNavLink>
+      {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
       UNI
     </StyledNavLink>
     <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
       Vote
     </StyledNavLink>*/}
-    <StyledAbsoluteLink href={'https://launchpoolx.bscex.org'}>LaunchpoolX</StyledAbsoluteLink>
-    <StyledAbsoluteLink href={'https://swapx.bscex.org'}>SwapX</StyledAbsoluteLink>
-    <StyledAbsoluteLink href={'https://governance.bscex.org'}>Governance</StyledAbsoluteLink>
-  </HeaderLinks>
+      <StyledAbsoluteLink href={'https://launchpoolx.bscex.org'}>LaunchpoolX</StyledAbsoluteLink>
+      <StyledAbsoluteLink href={'https://swapx.bscex.org'}>SwapX</StyledAbsoluteLink>
+      <StyledAbsoluteLink href={'https://governance.bscex.org'}>Governance</StyledAbsoluteLink>
+    </HeaderLinks>
+  )
 
   return (
     <HeaderFrame>
@@ -354,16 +356,12 @@ export default function Header() {
             <img width={'120px'} src={isDark ? Logo : Logo} alt="logo" />
           </UniIcon>
         </Title>
-        <WrapLinkDesktop>
-          {HeaderLink}
-        </WrapLinkDesktop>
+        <WrapLinkDesktop>{HeaderLink}</WrapLinkDesktop>
         <MenuIcon>
-          <img onClick={()=> setShowMenu(!showMenu)} width={'25px'} src={MenuDark} alt="logo" />
+          <img onClick={() => setShowMenu(!showMenu)} width={'25px'} src={MenuDark} alt="logo" />
         </MenuIcon>
       </HeaderRow>
-      <WrapLinkMobile>
-        {HeaderLink}
-      </WrapLinkMobile>
+      <WrapLinkMobile>{HeaderLink}</WrapLinkMobile>
       <HeaderControls>
         <HeaderElement>
           <HideSmall>

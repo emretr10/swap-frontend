@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import { Box } from 'rebass/styled-components'
 
-const Row = styled(Box)<{ align?: string; padding?: string; border?: string; borderRadius?: string; showMenu?: boolean; }>`
+const Row = styled(Box)<{
+  align?: string
+  padding?: string
+  border?: string
+  borderRadius?: string
+  showMenu?: boolean
+}>`
   width: 100%;
   display: flex;
   padding: 0;
