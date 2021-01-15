@@ -1,5 +1,5 @@
 import { ChainId } from '@bscex/sdk'
-import React from 'react'
+import React, {useState} from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import Logo from '../../assets/svg/logo.svg'
-import LogoDark from '../../assets/svg/logo-icon.svg'
+import MenuDark from '../../assets/svg/menu.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -27,9 +27,6 @@ import { useToggleSelfClaimModal, useShowClaimPopup } from '../../state/applicat
 import { useUserHasAvailableClaim } from '../../state/claim/hooks'
 import { useUserHasSubmittedClaim } from '../../state/transactions/hooks'
 import { Dots } from '../swap/styleds'
-// import Modal from '../Modal'
-// import UniBalanceContent from './UniBalanceContent'
-// import usePrevious from '../../hooks/usePrevious'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -99,13 +96,21 @@ const HeaderElementWrap = styled.div`
 const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
    width: 100%;
+   min-height: 60px;
   `};
 `
 
 const HeaderLinks = styled(Row)`
   justify-content: center;
+
+  @media (max-width: 767px) {
+    display: block;
+    height: ${({ theme, showMenu }) => (showMenu ? '220px' : '0px')};
+    overflow: hidden;
+    transition: all .15s linear;
+  }
+
   ${({ theme }) => theme.mediaWidth.upToMedium`
-    padding: 1rem 0 1rem 1rem;
     justify-content: flex-end;
 `};
 `
@@ -195,21 +200,6 @@ const UniIcon = styled.div`
   :hover {
     transform: rotate(-5deg);
   }
-  @media (max-width: 767px) {
-    display: none;
-  }
-`
-
-const UniIcon2 = styled.div`
-  display: none;
-  @media (max-width: 767px) {
-    display: block;
-    margin: 10px 0px;
-    transition: transform 0.3s ease;
-    :hover {
-      transform: rotate(-5deg);
-    }
-  }
 `
 
 const activeClassName = 'ACTIVE'
@@ -227,7 +217,7 @@ const StyledNavLink = styled(NavLink).attrs({
   font-size: 1rem;
   width: fit-content;
   margin: 0 12px;
-  font-weight: 500;
+  font-weight: 400;
 
   &.${activeClassName} {
     border-radius: 12px;
@@ -241,46 +231,18 @@ const StyledNavLink = styled(NavLink).attrs({
   }
   @media (max-width: 767px) {
     margin: 0 7px;
+    padding: 12px 16px;
   }
 `
 
-// const StyledExternalLink = styled(ExternalLink).attrs({
-//   activeClassName
-// })<{ isActive?: boolean }>`
-//   ${({ theme }) => theme.flexRowNoWrap}
-//   align-items: left;
-//   border-radius: 3rem;
-//   outline: none;
-//   cursor: pointer;
-//   text-decoration: none;
-//   color: ${({ theme }) => theme.text2};
-//   font-size: 1rem;
-//   width: fit-content;
-//   margin: 0 12px;
-//   font-weight: 500;
-
-//   &.${activeClassName} {
-//     border-radius: 12px;
-//     font-weight: 600;
-//     color: ${({ theme }) => theme.text1};
-//   }
-
-//   :hover,
-//   :focus {
-//     color: ${({ theme }) => darken(0.1, theme.text1)};
-//   }
-
-//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-//       display: none;
-// `}
-// `
-
 const StyledAbsoluteLink = styled.a`
   color: rgb(195, 197, 203);
-  font-weight: 500;
+  font-weight: 400;
   padding-left: 8px;
   padding-right: 8px;
   text-decoration: none;
+  display: flex;
+
   &:hover {
     color: #ffffff;
   }
@@ -288,8 +250,36 @@ const StyledAbsoluteLink = styled.a`
     color: rgb(195, 197, 203);
   }
   @media (max-width: 767px) {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 12px 16px;
+  }
+`
+
+const MenuIcon = styled.div`
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+  }
+`
+
+const WrapLinkDesktop = styled.div`
+  display: block;
+  @media (max-width: 767px) {
+    display: none;
+  }
+`
+
+const WrapLinkMobile = styled.div`
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
   }
 `
 
@@ -323,6 +313,34 @@ export default function Header() {
 
   // const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   // const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
+  const [showMenu, setShowMenu] = useState(false)
+  const HeaderLink = <HeaderLinks showMenu={showMenu}>
+    <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
+      AMMv1
+    </StyledNavLink>
+    <StyledNavLink
+      id={`pool-nav-link`}
+      to={'/pool'}
+      isActive={(match, { pathname }) =>
+        Boolean(match) ||
+        pathname.startsWith('/add') ||
+        pathname.startsWith('/remove') ||
+        pathname.startsWith('/create') ||
+        pathname.startsWith('/find')
+      }
+    >
+      {t('pool')}
+    </StyledNavLink>
+    {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
+      UNI
+    </StyledNavLink>
+    <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
+      Vote
+    </StyledNavLink>*/}
+    <StyledAbsoluteLink href={'https://launchpoolx.bscex.org'}>LaunchpoolX</StyledAbsoluteLink>
+    <StyledAbsoluteLink href={'https://swapx.bscex.org'}>SwapX</StyledAbsoluteLink>
+    <StyledAbsoluteLink href={'https://governance.bscex.org'}>Governance</StyledAbsoluteLink>
+  </HeaderLinks>
 
   return (
     <HeaderFrame>
@@ -335,37 +353,17 @@ export default function Header() {
           <UniIcon>
             <img width={'120px'} src={isDark ? Logo : Logo} alt="logo" />
           </UniIcon>
-          <UniIcon2>
-            <img width={'50px'} src={isDark ? LogoDark : LogoDark} alt="logo" />
-          </UniIcon2>
         </Title>
-        <HeaderLinks>
-          <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-            AMMv1
-          </StyledNavLink>
-          <StyledNavLink
-            id={`pool-nav-link`}
-            to={'/pool'}
-            isActive={(match, { pathname }) =>
-              Boolean(match) ||
-              pathname.startsWith('/add') ||
-              pathname.startsWith('/remove') ||
-              pathname.startsWith('/create') ||
-              pathname.startsWith('/find')
-            }
-          >
-            {t('pool')}
-          </StyledNavLink>
-          {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
-            UNI
-          </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            Vote
-          </StyledNavLink>*/}
-          <StyledAbsoluteLink href={'https://launchpoolx.bscex.org/#/'}>LaunchpoolX</StyledAbsoluteLink>
-          <StyledAbsoluteLink href={'https://swapx.bscex.org/#/'}>SwapX</StyledAbsoluteLink>
-        </HeaderLinks>
+        <WrapLinkDesktop>
+          {HeaderLink}
+        </WrapLinkDesktop>
+        <MenuIcon>
+          <img onClick={()=> setShowMenu(!showMenu)} width={'25px'} src={MenuDark} alt="logo" />
+        </MenuIcon>
       </HeaderRow>
+      <WrapLinkMobile>
+        {HeaderLink}
+      </WrapLinkMobile>
       <HeaderControls>
         <HeaderElement>
           <HideSmall>
@@ -383,32 +381,7 @@ export default function Header() {
               <CardNoise />
             </UNIWrapper>
           )}
-          {/*!availableClaim && aggregateBalance && (
-            <UNIWrapper onClick={() => setShowUniBalanceModal(true)}>
-              <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
-                {account && (
-                  <HideSmall>
-                    <TYPE.white
-                      style={{
-                        paddingRight: '.4rem'
-                      }}
-                    >
-                      <CountUp
-                        key={countUpValue}
-                        isCounting
-                        start={parseFloat(countUpValuePrevious)}
-                        end={parseFloat(countUpValue)}
-                        thousandsSeparator={','}
-                        duration={1}
-                      />
-                    </TYPE.white>
-                  </HideSmall>
-                )}
-                UNI
-              </UNIAmount>
-              <CardNoise />
-            </UNIWrapper>
-          )*/}
+
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
