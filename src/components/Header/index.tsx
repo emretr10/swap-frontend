@@ -230,8 +230,10 @@ const StyledNavLink = styled(NavLink).attrs({
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
   @media (max-width: 767px) {
-    margin: 0 7px;
+    margin: 0 0px;
     padding: 12px 16px;
+    justify-content: flex-end;
+    width: 100%;
   }
 `
 
@@ -251,6 +253,7 @@ const StyledAbsoluteLink = styled.a`
   }
   @media (max-width: 767px) {
     padding: 12px 16px;
+    justify-content: flex-end;
   }
 `
 
