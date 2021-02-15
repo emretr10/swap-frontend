@@ -283,12 +283,22 @@ export default function Swap() {
   return (
     <>
       <div className="grid grid-cols-3 gap-4">
-        <div><img className="h-16" src={require('../../assets/images/mochi4.png')} ></img></div>
-        <div><img className="h-16" src={require('../../assets/images/mochi3.png')} ></img></div>
-        <div><img className="h-16" src={require('../../assets/images/mochi5.png')} ></img></div>
+        <div>
+          <img className="h-16" src={require('../../assets/images/mochi4.png')}></img>
+        </div>
+        <div>
+          <img className="h-16" src={require('../../assets/images/mochi3.png')}></img>
+        </div>
+        <div>
+          <img className="h-16" src={require('../../assets/images/mochi5.png')}></img>
+        </div>
       </div>
-      <div className="msheader mt-3 mb-2 bg-fuchsia-500 text-2xl text-blue">MochiSwap - The tastiest Binance DEX exchange</div>
-      <div className="mb-8 bg-fuchsia-800 h-12 rounded-md flex items-center justify-center text-white text-2xl font-extrabold">Earn Mochi Tokens for each Swap!</div>
+      <div className="msheader mt-3 mb-2 bg-fuchsia-500 text-2xl text-blue">
+        MochiSwap - The tastiest Binance DEX exchange
+      </div>
+      <div className="mb-8 bg-fuchsia-800 h-12 rounded-md flex items-center justify-center text-white text-2xl font-extrabold">
+        Earn Mochi Tokens for each Swap!
+      </div>
       {/* <h1 className="mb-8 font-normal text-3xl text-grey-darkest leading-loose my-3">
         MochiSwap - The tastiest Binance DEX exchange
       </h1> */}
