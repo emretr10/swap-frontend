@@ -7,6 +7,13 @@ Document
 ========
 */
 
+.msheader {
+  background-color: #ff8da0!important;
+  border-radius: 5px!important;
+  border: 4px solid pink!important;
+  padding: 5px!important;
+}
+
 /**
 Use a better box model (opinionated).
 */
