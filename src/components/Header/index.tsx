@@ -4,6 +4,7 @@ import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
+import { Moon, Sun } from 'react-feather'
 
 import styled from 'styled-components'
 
@@ -18,15 +19,18 @@ import { TYPE } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
-import Menu from '../Menu'
+// import Menu from '../Menu'
 
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
 import ClaimModal from '../claim/ClaimModal'
+// import Toggle from '../../components/Toggle'
 import { useToggleSelfClaimModal, useShowClaimPopup } from '../../state/application/hooks'
 import { useUserHasAvailableClaim } from '../../state/claim/hooks'
 import { useUserHasSubmittedClaim } from '../../state/transactions/hooks'
 import { Dots } from '../swap/styleds'
+
+import '../../styles/main.css';
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -35,10 +39,11 @@ const HeaderFrame = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  background-color: #8A2BE2;
   width: 100%;
   top: 0;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.1);
   padding: 1rem;
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToMedium`
@@ -113,6 +118,33 @@ const HeaderLinks = styled(Row)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     justify-content: flex-end;
 `};
+`
+
+export const StyledMenuButton = styled.button`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  height: 35px;
+  background-color: ${({ theme }) => theme.bg3};
+  margin-left: 8px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.5rem;
+  :hover,
+  :focus {
+    cursor: pointer;
+    outline: none;
+    background-color: ${({ theme }) => theme.bg4};
+  }
+  svg {
+    margin-top: 2px;
+  }
+  > * {
+    stroke: ${({ theme }) => theme.text1};
+  }
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
@@ -213,7 +245,7 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text2};
+  color: ${({ theme }) => theme.text6};
   font-size: 1rem;
   width: fit-content;
   margin: 0 12px;
@@ -222,7 +254,7 @@ const StyledNavLink = styled(NavLink).attrs({
   &.${activeClassName} {
     border-radius: 12px;
     font-weight: 600;
-    color: ${({ theme }) => theme.text1};
+    color: ${({ theme }) => theme.text6};
   }
 
   :hover,
@@ -237,25 +269,25 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-const StyledAbsoluteLink = styled.a`
-  color: rgb(195, 197, 203);
-  font-weight: 400;
-  padding-left: 8px;
-  padding-right: 8px;
-  text-decoration: none;
-  display: flex;
+// const StyledAbsoluteLink = styled.a`
+//   color: rgb(195, 197, 203);
+//   font-weight: 400;
+//   padding-left: 8px;
+//   padding-right: 8px;
+//   text-decoration: none;
+//   display: flex;
 
-  &:hover {
-    color: #ffffff;
-  }
-  &.active {
-    color: rgb(195, 197, 203);
-  }
-  @media (max-width: 767px) {
-    padding: 12px 16px;
-    justify-content: flex-end;
-  }
-`
+//   &:hover {
+//     color: #ffffff;
+//   }
+//   &.active {
+//     color: rgb(195, 197, 203);
+//   }
+//   @media (max-width: 767px) {
+//     padding: 12px 16px;
+//     justify-content: flex-end;
+//   }
+// `
 
 const MenuIcon = styled.div`
   transition: transform 0.3s ease;
@@ -303,6 +335,8 @@ export default function Header() {
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
 
+  const [darkMode, toggleDarkMode] = useDarkModeManager()
+
   const toggleClaimModal = useToggleSelfClaimModal()
 
   const availableClaim: boolean = useUserHasAvailableClaim(account)
@@ -320,7 +354,7 @@ export default function Header() {
   const HeaderLink = (
     <HeaderLinks showMenu={showMenu}>
       <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-        AMMv1
+        Exchange
       </StyledNavLink>
       <StyledNavLink
         id={`pool-nav-link`}
@@ -335,15 +369,16 @@ export default function Header() {
       >
         {t('pool')}
       </StyledNavLink>
+      
       {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
       UNI
     </StyledNavLink>
     <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
       Vote
     </StyledNavLink>*/}
-      <StyledAbsoluteLink href={'https://launchpoolx.bscex.org'}>LaunchpoolX</StyledAbsoluteLink>
+      {/* <StyledAbsoluteLink href={'https://launchpoolx.bscex.org'}>LaunchpoolX</StyledAbsoluteLink>
       <StyledAbsoluteLink href={'https://swapx.bscex.org'}>SwapX</StyledAbsoluteLink>
-      <StyledAbsoluteLink href={'https://governance.bscex.org'}>Governance</StyledAbsoluteLink>
+      <StyledAbsoluteLink href={'https://governance.bscex.org'}>Governance</StyledAbsoluteLink> */}
     </HeaderLinks>
   )
 
@@ -394,7 +429,10 @@ export default function Header() {
         </HeaderElement>
         <HeaderElementWrap>
           <Settings />
-          <Menu />
+          {/* <Menu /> */}
+          <StyledMenuButton onClick={() => toggleDarkMode()}>
+            {darkMode ? <Moon size={20} /> : <Sun size={20} />}
+          </StyledMenuButton>
         </HeaderElementWrap>
       </HeaderControls>
     </HeaderFrame>
