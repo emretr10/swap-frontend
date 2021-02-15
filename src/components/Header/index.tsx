@@ -44,7 +44,7 @@ const HeaderFrame = styled.div`
   top: 0;
   position: relative;
   border-bottom: 5px solid rgba(0, 0, 0, 0.1);
-  padding: .4rem;
+  padding: 0.4rem;
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;

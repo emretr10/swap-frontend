@@ -282,8 +282,8 @@ export default function Swap() {
 
   return (
     <>
-      <img className="h-16" src={require('../../assets/images/mochi4.png')} ></img>
-      <img className="h-16" src={require('../../assets/images/mochi3.png')} ></img>
+      <img className="h-16" src={require('../../assets/images/mochi4.png')}></img>
+      <img className="h-16" src={require('../../assets/images/mochi3.png')}></img>
       <h1 className="mb-8 font-normal text-3xl text-grey-darkest leading-loose my-3">
         MochiSwap - The tastiest Binance DEX exchange
       </h1>
