@@ -30,7 +30,7 @@ import { useUserHasAvailableClaim } from '../../state/claim/hooks'
 import { useUserHasSubmittedClaim } from '../../state/transactions/hooks'
 import { Dots } from '../swap/styleds'
 
-import '../../styles/main.css';
+import '../../styles/main.css'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -39,7 +39,7 @@ const HeaderFrame = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: #8A2BE2;
+  background-color: #8a2be2;
   width: 100%;
   top: 0;
   position: relative;
@@ -369,7 +369,7 @@ export default function Header() {
       >
         {t('pool')}
       </StyledNavLink>
-      
+
       {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
       UNI
     </StyledNavLink>
