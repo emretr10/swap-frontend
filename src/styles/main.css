@@ -14,6 +14,15 @@ Document
   padding: 5px!important;
 }
 
+#connect-wallet {
+  background: #F0B90B!important;
+  color: white!important;
+}
+
+#connect-wallet:hover {
+  background: #e5b73b!important;
+}
+
 /**
 Use a better box model (opinionated).
 */
