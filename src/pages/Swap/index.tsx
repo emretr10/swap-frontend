@@ -282,18 +282,34 @@ export default function Swap() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-4">
-        <div>
-          {/* <img className="h-26" src={require('../../assets/images/blank.png')}></img> */}
+      {/* <main className="bg-yellow-200 grid place-items-center h-screen">
+      <div className="relative">
+        <div className="h-40 w-40 bg-pink-400 rounded-t-full relative overflow-hidden">
+          <div className="h-40 w-40 bg-gradient-to-l from-pink-100 to-pink-400 rounded-t-full absolute left-12"></div>
         </div>
-        {/* <div className="msheader mt-3 mb-2 bg-fuchsia-500 text-2xl text-blue">
-        MochiSwap - The tastiest Binance DEX exchange
+        <div className="h-32 w-40 bg-pink-400 rounded-b-3xl relative overflow-hidden">
+          <div className="h-32 w-40 bg-gradient-to-l from-pink-100 to-pink-400 rounded-b-3xl absolute left-12"></div>
+        </div>
+        <div className="h-20 w-10 rounded-b-full bg-yellow-400 absolute left-16 overflow-hidden">
+          <div className="h-4 bg-yellow-500"></div>
+        </div>
+        <div className="h-9 w-3 rounded-b-full absolute left-6 bg-pink-400"></div>
+        <div className="h-4 w-3 rounded-b-full absolute left-10 bg-pink-400"></div>
+        <div className="h-9 w-2 rounded-t-full absolute left-8 bg-yellow-200"></div>
       </div>
-      <div className="mb-8 bg-fuchsia-800 h-12 rounded-md flex items-center justify-center text-2xl font-extrabold">
-        Earn Mochi Tokens for each Swap!
-      </div> */}
+      </main> */}
+      <h1 className="mb-1 font-normal text-3xl text-grey-darkest leading-loose my-3">
+        <span className="font-bold">MochiFinance</span> - The tastiest Binance DEX & Liqiudity Pools
+      </h1>
+      <div className="grid grid-cols-3 gap-4">
+        <div><span><img className="h-16" src={require('../../assets/images/mochi6.png')}></img></span></div>
+        <div><span><img className="h-16" src={require('../../assets/images/mochi4.png')}></img></span></div>
+        <div><span><img className="h-16" src={require('../../assets/images/mochi3.png')}></img></span></div>
       </div>
- 
+      
+      <p className="mb-4 font-normal text-1xl text-grey-darkest leading-loose my-3">
+        Liquidity Mine <span className="font-bold">MOCHI</span> on <span className="font-bold">SWAPS</span> or in one of our pools!
+      </p>
       {/* <h1 className="mb-8 font-normal text-3xl text-grey-darkest leading-loose my-3">
         MochiSwap - The tastiest Binance DEX exchange
       </h1> */}
