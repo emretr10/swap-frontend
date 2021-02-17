@@ -283,9 +283,7 @@ export default function Swap() {
   return (
     <>
       <div className="grid grid-cols-3 gap-4">
-        <div>
-          {/* <img className="h-26" src={require('../../assets/images/blank.png')}></img> */}
-        </div>
+        <div>{/* <img className="h-26" src={require('../../assets/images/blank.png')}></img> */}</div>
         {/* <div className="msheader mt-3 mb-2 bg-fuchsia-500 text-2xl text-blue">
         MochiSwap - The tastiest Binance DEX exchange
       </div>
@@ -293,7 +291,7 @@ export default function Swap() {
         Earn Mochi Tokens for each Swap!
       </div> */}
       </div>
- 
+
       {/* <h1 className="mb-8 font-normal text-3xl text-grey-darkest leading-loose my-3">
         MochiSwap - The tastiest Binance DEX exchange
       </h1> */}
