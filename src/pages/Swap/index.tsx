@@ -302,13 +302,26 @@ export default function Swap() {
         <span className="font-bold">MochiFinance</span> - The tastiest Binance DEX & Liqiudity Pools
       </h1>
       <div className="grid grid-cols-3 gap-4">
-        <div><span><img className="h-16" src={require('../../assets/images/mochi6.png')}></img></span></div>
-        <div><span><img className="h-16" src={require('../../assets/images/mochi4.png')}></img></span></div>
-        <div><span><img className="h-16" src={require('../../assets/images/mochi3.png')}></img></span></div>
+        <div>
+          <span>
+            <img className="h-16" src={require('../../assets/images/mochi6.png')}></img>
+          </span>
+        </div>
+        <div>
+          <span>
+            <img className="h-16" src={require('../../assets/images/mochi4.png')}></img>
+          </span>
+        </div>
+        <div>
+          <span>
+            <img className="h-16" src={require('../../assets/images/mochi3.png')}></img>
+          </span>
+        </div>
       </div>
-      
+
       <p className="mb-4 font-normal text-1xl text-grey-darkest leading-loose my-3">
-        Liquidity Mine <span className="font-bold">MOCHI</span> on <span className="font-bold">SWAPS</span> or in one of our pools!
+        Liquidity Mine <span className="font-bold">MOCHI</span> on <span className="font-bold">SWAPS</span> or in one of
+        our pools!
       </p>
       {/* <h1 className="mb-8 font-normal text-3xl text-grey-darkest leading-loose my-3">
         MochiSwap - The tastiest Binance DEX exchange
