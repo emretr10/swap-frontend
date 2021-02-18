@@ -298,7 +298,9 @@ export default function Swap() {
         <div className="h-9 w-2 rounded-t-full absolute left-8 bg-yellow-200"></div>
       </div>
       </main> */}
-      <h1 className="mb-1 font-normal text-3xl text-grey-darkest leading-loose my-3">
+      
+    
+      {/* <h1 className="mb-1 font-normal text-3xl text-grey-darkest leading-loose my-3">
         <span className="font-bold">MochiFinance</span> - The tastiest Binance DEX & Liqiudity Pools
       </h1>
       <div className="grid grid-cols-3 gap-4">
@@ -317,12 +319,12 @@ export default function Swap() {
             <img className="h-16" src={require('../../assets/images/mochi3.png')}></img>
           </span>
         </div>
-      </div>
+      </div> */}
 
-      <p className="mb-4 font-normal text-1xl text-grey-darkest leading-loose my-3">
+      {/* <p className="mb-4 font-normal text-1xl text-grey-darkest leading-loose my-3">
         Liquidity Mine <span className="font-bold">MOCHI</span> on <span className="font-bold">SWAPS</span> or in one of
         our pools!
-      </p>
+      </p> */}
       {/* <h1 className="mb-8 font-normal text-3xl text-grey-darkest leading-loose my-3">
         MochiSwap - The tastiest Binance DEX exchange
       </h1> */}
@@ -334,7 +336,7 @@ export default function Swap() {
       <AppBody>
         <SwapPoolTabs active={'swap'} />
         <Wrapper id="swap-page">
-          <img className="h-23" src={require('../../assets/images/blank.png')}></img>
+          {/* <img className="h-23" src={require('../../assets/images/blank.png')}></img> */}
           <ConfirmSwapModal
             isOpen={showConfirm}
             trade={trade}

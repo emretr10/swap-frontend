@@ -37,6 +37,11 @@ const AppWrapper = styled.div`
   flex-flow: column;
   align-items: flex-start;
   overflow-x: hidden;
+  background-image: url(/images/moch1.svg), url(/images/moch8.svg), url(/images/moch10.svg);
+  background-repeat: no-repeat;
+  background-position: center 420px, 10% 230px, 90% 230px;
+  background-size: contain, 266px, 266px;
+  min-height: 90vh;
 `
 
 const HeaderWrapper = styled.div`
