@@ -6,7 +6,7 @@ export const OVERLAY_READY = 'OVERLAY_READY'
 type FormaticSupportedChains = Extract<ChainId, ChainId.MAINNET>
 
 const CHAIN_ID_NETWORK_ARGUMENT: { readonly [chainId in FormaticSupportedChains]: string | undefined } = {
-  [ChainId.MAINNET]: undefined,
+  [ChainId.MAINNET]: undefined
 }
 
 export class FortmaticConnector extends FortmaticConnectorCore {
