@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from '@bscex/sdk'
+import { currencyEquals, Trade } from '@mochiswap/bsdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

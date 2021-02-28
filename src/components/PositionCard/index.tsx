@@ -1,4 +1,4 @@
-import { JSBI, Pair, Percent } from '@bscex/sdk'
+import { JSBI, Pair, Percent } from '@mochiswap/bsdk'
 import { darken } from 'polished'
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'react-feather'

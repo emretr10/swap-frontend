@@ -1,4 +1,4 @@
-import { Trade, TradeType } from '@bscex/sdk'
+import { Trade, TradeType } from '@mochiswap/bsdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

@@ -5,7 +5,7 @@ import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { abi as IUniswapV2Router02ABI } from '@bscex/periphery/build/UniswapV2Router02.json'
 import { ROUTER_ADDRESS } from '../constants'
-import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@bscex/sdk'
+import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@mochiswap/bsdk'
 import { TokenAddressMap } from '../state/lists/hooks'
 
 // returns the checksummed address if the address is valid, otherwise returns false
@@ -18,11 +18,11 @@ export function isAddress(value: any): string | false {
 }
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  1: 'etherscan.io',
-  3: 'ropsten.etherscan.io',
-  4: 'rinkeby.etherscan.io',
-  5: 'goerli.etherscan.io',
-  42: 'kovan.etherscan.io',
+  // 1: 'etherscan.io',
+  // 3: 'ropsten.etherscan.io',
+  // 4: 'rinkeby.etherscan.io',
+  // 5: 'goerli.etherscan.io',
+  // 42: 'kovan.etherscan.io',
   56: 'bscscan.com',
   97: 'testnet.bscscan.com'
 }
@@ -32,7 +32,7 @@ export function getEtherscanLink(
   data: string,
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}`
+  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[56]}`
 
   switch (type) {
     case 'transaction': {

@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@bscex/sdk'
+import { Currency, ETHER, Token } from '@mochiswap/bsdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

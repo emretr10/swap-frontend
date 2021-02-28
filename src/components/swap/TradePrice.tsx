@@ -1,5 +1,5 @@
 import React from 'react'
-import { Price } from '@bscex/sdk'
+import { Price } from '@mochiswap/bsdk'
 import { useContext } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

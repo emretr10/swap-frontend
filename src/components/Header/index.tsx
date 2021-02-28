@@ -1,4 +1,4 @@
-import { ChainId } from '@bscex/sdk'
+import { ChainId } from '@mochiswap/bsdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
@@ -319,13 +319,13 @@ const WrapLinkMobile = styled.div`
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
+  // [ChainId.MAINNET]: undefined,
+  // [ChainId.RINKEBY]: 'Rinkeby',
+  // [ChainId.ROPSTEN]: 'Ropsten',
+  // [ChainId.GÖRLI]: 'Görli',
+  // [ChainId.KOVAN]: 'Kovan',
   [ChainId.MAINNET]: undefined,
-  [ChainId.RINKEBY]: 'Rinkeby',
-  [ChainId.ROPSTEN]: 'Ropsten',
-  [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan',
-  [ChainId.BSC_MAINNET]: undefined,
-  [ChainId.BSC_TESTNET]: 'testnet'
+  [ChainId.BSCTESTNET]: 'testnet'
 }
 
 export default function Header() {

@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from '@bscex/sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from '@mochiswap/bsdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'

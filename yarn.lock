@@ -1142,20 +1142,6 @@
     "@bscex/core" "1.0.5"
     "@bscex/lib" "2.0.8"
 
-"@bscex/sdk@3.1.8":
-  version "3.1.8"
-  resolved "https://registry.yarnpkg.com/@bscex/sdk/-/sdk-3.1.8.tgz#966558d62dd131d5fdc3665edd814bf11e7fdefc"
-  integrity sha512-KkP1VY1J16d85s21Wf5AYi+3VxXQp4SraFByiIDRvcS55NkiKxgTzUOGSsJy1jE38CgMjFwQ0vlgpppOJ0je4g==
-  dependencies:
-    "@bscex/core" "1.0.5"
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 "@bscswap/binance-connector@^6.0.10":
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/@bscswap/binance-connector/-/binance-connector-6.0.10.tgz#404144b225971635ad69abef84e359959bb5bb6d"
@@ -2020,6 +2006,20 @@
   dependencies:
     "@babel/runtime" "^7.7.2"
     core-js "^3.4.1"
+
+"@mochiswap/bsdk@3.3.8":
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/@mochiswap/bsdk/-/bsdk-3.3.8.tgz#5c6730198eea2070fa7878a268cb6b2583214500"
+  integrity sha512-6Xio3iZxoSloMiNOtxuMvfqI8whwBTCCcMXvFQZDtb3u81JgBLvvN0dQiBz+s/2sbe/2NE0AQGcT/sMo4uQ4Nw==
+  dependencies:
+    "@bscex/core" "1.0.5"
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

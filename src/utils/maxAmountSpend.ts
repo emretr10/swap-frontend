@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from '@bscex/sdk'
+import { CurrencyAmount, ETHER, JSBI } from '@mochiswap/bsdk'
 import { MIN_ETH } from '../constants'
 
 /**

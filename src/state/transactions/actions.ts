@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from '@bscex/sdk'
+import { ChainId } from '@mochiswap/bsdk'
 
 export interface SerializableTransactionReceipt {
   to: string
