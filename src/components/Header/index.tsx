@@ -370,7 +370,7 @@ export default function Header() {
       >
         {t('pool')}
       </StyledNavLink>
-      <StyledAbsoluteLink target="_blank" href={'https://pool.mochiswap.io'}>Farms</StyledAbsoluteLink>
+      <StyledAbsoluteLink target="_blank" href={'https://farms.mochiswap.io'}>Farms</StyledAbsoluteLink>
 
       {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
       UNI
