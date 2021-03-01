@@ -269,25 +269,25 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-// const StyledAbsoluteLink = styled.a`
-//   color: rgb(195, 197, 203);
-//   font-weight: 400;
-//   padding-left: 8px;
-//   padding-right: 8px;
-//   text-decoration: none;
-//   display: flex;
+const StyledAbsoluteLink = styled.a`
+  color: rgb(195, 197, 203);
+  font-weight: 400;
+  padding-left: 8px;
+  padding-right: 8px;
+  text-decoration: none;
+  display: flex;
 
-//   &:hover {
-//     color: #ffffff;
-//   }
-//   &.active {
-//     color: rgb(195, 197, 203);
-//   }
-//   @media (max-width: 767px) {
-//     padding: 12px 16px;
-//     justify-content: flex-end;
-//   }
-// `
+  &:hover {
+    color: #ffffff;
+  }
+  &.active {
+    color: rgb(195, 197, 203);
+  }
+  @media (max-width: 767px) {
+    padding: 12px 16px;
+    justify-content: flex-end;
+  }
+`
 
 const MenuIcon = styled.div`
   transition: transform 0.3s ease;
@@ -356,6 +356,7 @@ export default function Header() {
       <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
         Exchange
       </StyledNavLink>
+
       <StyledNavLink
         id={`pool-nav-link`}
         to={'/pool'}
@@ -369,6 +370,7 @@ export default function Header() {
       >
         {t('pool')}
       </StyledNavLink>
+      <StyledAbsoluteLink target="_blank" href={'https://pool.mochiswap.io'}>Farms</StyledAbsoluteLink>
 
       {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>
       UNI
