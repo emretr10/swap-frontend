@@ -16,6 +16,11 @@ type ChainTokenList = {
 export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
 export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
 export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
+export const DOGE = new Token(ChainId.MAINNET, '0xba2ae424d960c26247dd6c32edc70b295c744c43', 6, 'DOGE', 'DOGE')
+export const DOT = new Token(ChainId.MAINNET, '0x7083609fce4d1d8dc0c979aab8c869ea2c873402', 6, 'DOT', 'DOT')
+export const ADA = new Token(ChainId.MAINNET, '0x3ee2200efb3400fabb9aacf31297cbdd1d435d47', 6, 'ADA', 'ADA')
+export const BTC = new Token(ChainId.MAINNET, '0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c', 6, 'BTC', 'BTC')
+export const ETH = new Token(ChainId.MAINNET, '0x2170ed0880ac9a755fd29b2688956bd959f933f8', 6, 'ETH', 'ETH')
 export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f5717214004A7f26888', 18, 'COMP', 'Compound')
 export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
@@ -102,15 +107,15 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], B_USDT, BUSD, B_DAI],
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, DOGE, DOT, ADA, BTC, ETH],
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], B_USDT, BUSD, B_DAI, DOGE, DOT, ADA, BTC, ETH],
   [ChainId.BSCTESTNET]: [...WETH_ONLY[ChainId.BSCTESTNET], T_USDT, T_BUSD, T_DAI]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, DOGE],
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], B_USDT, BUSD, B_DAI],
   [ChainId.BSCTESTNET]: [...WETH_ONLY[ChainId.BSCTESTNET], T_USDT, T_BUSD, T_DAI]
 }
